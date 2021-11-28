@@ -185,7 +185,8 @@ if (WinActive("Viewer") or WinActive("Worklist")) and (f11) {
     } else {
         Switch MCount {
             case 1: WinMove,,, Mon1Left-win10, Mon1Top, Mon1Right-Mon1Left+2*win10, Mon1Bottom-Mon1Top+win10
-            case 2: WinMove,,, Mon1Left-win10, Mon1Top, Mon1Right-Mon1Left+2*win10, Mon1Bottom-Mon1Top+win10
+            ; case 2: WinMove,,, Mon1Left-win10, Mon1Top, Mon1Right-Mon1Left+2*win10, Mon1Bottom-Mon1Top+win10 ; Set to left monitor
+            case 2: WinMove,,, Mon2Left-win10, Mon2Top, Mon2Right-Mon2Left+2*win10, Mon2Bottom-Mon2Top+win10 ; Set to right monitor
             case 3: WinMove,,, Mon2Left-win10, Mon2Top, Mon2Right-Mon2Left+2*win10, Mon2Bottom-Mon2Top+win10
         }
     }
