@@ -155,10 +155,15 @@ if (WinActive("Viewer") or WinActive("Worklist")) and (f11) {
  
     SysGet, MCount, MonitorCount
     SysGet, Mon1, MonitorWorkArea, 1
-    if (MCount > 1) {
+    if (MCount == 2) {
         SysGet, Mon2, MonitorWorkArea, 2
+        if (Mon2Left<Mon1Left) {  ; 2 1
+            SysGet, Mon1, MonitorWorkArea, 2
+            SysGet, Mon2, MonitorWorkArea, 1  
+        }
     }
     if (MCount == 3) { ; we assume that the left most monitor is the non-image monitor, and test common cases
+        SysGet, Mon2, MonitorWorkArea, 2
         SysGet, Mon3, MonitorWorkArea, 3
         if (Mon3Left<Mon2Left) and (Mon3Left<Mon1Left) {
             if (Mon2Left<Mon1Left) {  ; 3 2 1
