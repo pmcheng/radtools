@@ -85,7 +85,7 @@ about:
     Msgbox,,RadTools,
 (
 RadTools: Radiology Tools for USC
-v. 2021-04-17
+v. 2023-07-16
 
 by Phillip Cheng MD MS
 phillip.cheng@med.usc.edu
@@ -108,7 +108,11 @@ if (A_TimeIdle > %delay%) and (mouse) {
     MouseMove,-1,0,,R
 }
 if (citrix) {
-    ControlSend,,{F15},\\Remote
+    WinGet MyList, List, ahk_exe wfica32.exe
+    Loop, %MyList%
+    {
+        ControlSend,,{F15}, % "ahk_id" MyList%A_Index%
+    }
 }
 return
 
@@ -137,7 +141,7 @@ if (altq) {
 }
 return
 
-~!w::
+$!w::
 if (altw) {
     if WinActive("Viewer") or WinActive("PowerJacket") {
         WinActivate, Worklist
@@ -145,6 +149,8 @@ if (altw) {
     } else if WinActive("Worklist") {
         WinActivate, Viewer
     }
+} else {
+    Send !w
 }
 return
 
